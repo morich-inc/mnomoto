@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>野本誠 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>野本誠 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. エムスリーキャリア株式会社</a>
+  <a href="#k2">2. 株式会社バリューＨＲ</a>
+  <a href="#k3">3. 株式会社NEXT ONE（ネクストワン）</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">事業責任者候補</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">エムスリーキャリア株式会社</div>
+  <div class="co-url"><a href="https://www.m3career.com/corporate-info/#about-4" target="_blank">https://www.m3career.com/corporate-info/#about-4</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒105-0001 東京都港区虎ノ門4-1-28 虎ノ門タワーズオフィス</td></tr><tr><th>設立</th><td>2009年</td></tr><tr><th>従業員数</th><td>1,101名（2025年10月末時点）</td></tr><tr><th>上場区分</th><td>未上場（上場予定：当面予定なし）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li><strong>豊富なアセットを活用できる事業開発環境！</strong>：エムスリー株式会社（51％）と株式会社エス・エム・エス（49％）による安定したジョイントベンチャーですが、親会社からの過度な干渉はなく自由度の高い環境で任せてもらえます。豊富なアセットを活用して、『材料がいっぱいある中で絵を描く』ことが得意な方にぴったりなフェーズです。</li><li><strong>リアルビジネスへの強み</strong>：親会社のエムスリーと比較して、『営業を伴うビジネス』や『人を伴うビジネス』といったリアルビジネスに強みを持っています。プロダクト作りだけでなく、営業組織を牽引できる方は特に活躍できるフィールドです。</li><li><strong>社員の9割以上が異業界出身</strong>：医療業界や人材業界が未経験の方でも大歓迎です！『誰が言ったか』ではなく『何を言ったか』を重視するフラットでスピード感のある組織です。ロジカルでありながらも、活気にあふれた風土があります。</li><li><strong>柔軟な働き方を後押し！</strong>：週1～3日の在宅勤務（遠隔地でのフルリモート事例あり）や時差出勤、短時間勤務に対応しています。さらに個人の事情やスキルアップ目的での副業も可能です。『健康経営優良法人2026（ホワイト500）』にも2年連続で認定されており、働きやすさも抜群です。</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">2009年の設立以来、「イキイキと働く医療従事者を一人でも増やし、医療に貢献する」というミッションを掲げているエムスリーキャリア。日本の医療インフラが直面する「人材不足・偏在」「過重労働」「医療機関の経営難」といった深刻な課題に対し、100年先の未来を見据えて事業を展開しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>2009年の設立以来、「イキイキと働く医療従事者を一人でも増やし、医療に貢献する」というミッションを掲げているエムスリーキャリア。日本の医療インフラが直面する「人材不足・偏在」「過重労働」「医療機関の経営難」といった深刻な課題に対し、100年先の未来を見据えて事業を展開しています。</p><p>当社の圧倒的な優位性は、日本の医師の約9割にあたる34万人以上の医師が登録する会員データベースを有している点です。この強固なアセットを武器に、医療人材マッチングを核としながら、医療機関の採用・経営コンサルティング、一般企業向けの健康経営支援、さらには医師の働き方改革支援と多彩なソリューションを提供しています。</p><p>実績として、産業医紹介サービスにおいては医師登録実績8年連続No.1を獲得し、訪日外国人向けオンライン診療サービスでは世界43か国の利用実績を突破しています。従業員数も1,101名（2025年10月末時点）へと拡大し、医療人材のリーディングカンパニーとして確かな成長とイノベーションを続けています！</p><p><strong>■代表取締役 沼倉 敏樹</strong><br>北海道大樹町生まれ。帯広柏葉高校、中京大学体育学部を卒業後、公立高校の教員、アパレル商社のブランドマネージャーを経て、青山学院大学大学院国際マネジメント研究科（MBA）に入学。大学院修了後にエムスリーキャリアへ入社。現場のコンサルタント、医師キャリア事業部長を経て2021年4月から代表取締役。趣味はスキー。年間滑走日数は30日以上。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 事業責任者候補</div>
+          <div class="job-preview">医療×HRTechの掛け算で業界No.1を誇るエムスリーキャリアで、既存事業拡大・新規事業開発を牽引する事業責任者候補を募集。</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>《 医療 × HRTech で世界を変える 》</strong><br>エムスリーキャリアは、m3.comの会員基盤・オペレーションエクセレンスを強みに創業以来業績を伸ばし、コロナ禍の市場の変化を乗り越え、新たな事業・サービスを次々と生み出してきました。そして、現在はほぼ全てのサービスが業界No.1となっています。今、医療業界は過去にない大きな変革期を迎えています。この掛け算で世界に革新を起こせるのは、唯一エムスリーキャリアだけだと自負しています。</p><p><strong>■「圧倒的No.1の人材サービス × HRTech」の組み合わせでしか医療課題は解決できない</strong><br>ホワイトカラーの採用と異なり、医療人材採用においては信頼できるデータが世の中に出回っておらず、確からしいノウハウやナレッジを知る術もありません。そのため医療機関は、いつ、どのくらいの確率で人材確保できるのか、見通しが立てられないという厳しい状況下にいます。医師・薬剤師の確保 ≒ 収益の確保という構造である医療経営において、圧倒的なデータ量を根拠にした採用予測に基づき、働き方の多様化に対応できる全方位の採用支援ができるのは、医療人材で圧倒的No.1、かつその強みを活かしたHRTechの掛け算ができる当社のみだと考えています。</p><p><strong>■潤沢なリソースがあるから、事業責任者としてより大きな絵を描ける</strong><br>事業運営に関わる際にぶつかりやすい壁は、アイデアがあってもリソースが足りずに実現できないという点ではないでしょうか。リソースが小さいと、そのぶん描ける構想や戦略の範囲が限られてしまいますが、エムスリーキャリアであれば資金や情報・人材など各リソースが十分にある状態で事業開発・推進に着手できます。</p><p><strong>■志をともにする仲間が大勢いるから、成功するまで走り続けられる</strong><br>エムスリーキャリアには様々なバックグラウンドを持つ優秀な人材が多く集まっています。壁打ち相手がおらず、事業のアイデアや施策が自身の経験知見の範囲内にとどまってしまうといった心配はありません。携わるプロジェクトがうまくいっている時もそうでない時も相談・議論できる仲間がたくさんいるので、目標達成のために前向きにチャレンジし続けられる環境です。</p><p><strong>【募集背景】</strong><br>エムスリーキャリアは、約40のグループで構成されています。各グループにゼネラルマネージャー（部長）、サービス責任者をそれぞれ配置していますが、現状は複数部門を兼任していることも多く、ミッション達成・事業成長のためには組織の中核を担うマネジメント人材がまだまだ必要です。そこで、サービス責任者としての経験知見をお持ちの方にジョインいただき、当社の成長を牽引してもらえることを期待しています。</p><p><strong>【職務内容】</strong><br>入社後の具体的な役割は、経験スキル・適性・事業課題の優先度などを勘案し決定いたします。入社直後は、既存事業におけるサービス企画・業務改善・オペレーション設計などを担当しながら、サービスや組織への理解を深めていただきます。その後、事業責任者として活躍していただくことを期待しています。</p><p><strong>アサイン例：</strong></p><ul><li><strong>既存事業の拡大、派生サービスの開発</strong><br>粗利1億円以上、メンバー10名以上の責任者として、担当する事業の拡大をお任せします。課題整理や改善プロジェクトの推進はもちろん、派生サービスの開発も担当いただきます。</li><li><strong>新規事業開発</strong><br>市場調査・ビジネスモデル設計・テスト実施と、事業を創ることを担当いただきます。ゼロベースで事業立ち上げ、小さく立ち上がっているサービスの拡大するなど、様々なフェーズがあります。</li></ul><p>※変更の範囲：会社が定める範囲であり</p><p><strong>【ポジションの魅力】</strong></p><ul><li><strong>事業責任者として、魅力的なチャレンジ機会がたくさん得られる</strong><br>30以上のサービスがあり、新規事業開発にも積極的な社風です。そのため、エムスリーキャリアには「0→1」「1→10」「10→100」すべてのフェーズの事業があり、各事業のビジネスモデルも多岐にわたります。事業運営に必要なリソースも潤沢にあり、いろんな専門性をもった優秀な社員とアイデアの壁打をしたり建設的な議論もできる組織です。さらに、エムスリーグループのシナジーを活かした事業開発やプロジェクト推進も可能となっています。ですので、事業責任者として描ける戦略や構想は大きく、ダイナミックなチャレンジができる環境を提供できます。</li><li><strong>マーケットの継続的な成長が期待でき、企業としてもまだまだ発展途上のフェーズ</strong><br>医療・ヘルスケアやITの分野は、今後も継続的な成長が見込める日本では希少なマーケットではないでしょうか。そんな中で、当社は3期連続で過去最高益を更新中の成長フェーズにあり、既存事業から派生させた新規サービス・プロダクトの開発や、まったく新しい事業の柱をつくるための企画・開発のニーズがたくさんあります。例えば、メディカルツーリズムや生成AIの事業活用、オンライン診療による地域医療偏在の解消といった新規プロジェクトはもちろん、すでに業界No.1である医療人材の領域でも、緊急性・専門性の高い採用ニーズに応えるマッチングサービス、短時間の人材確保のニーズに応えるスキマバイトサービスなどの革新的なサービスを生み出しています。エムスリーキャリアは、まだまだ未完成で発展途上のフェーズにいる企業です。やりたいけれど着手できていないアイデアも、多くあります。責任者候補候補としてジョインしてくださる方には、これまでの経験知見を活かして、どんどん役割を広げていってほしいです。</li><li><strong>医療課題の根本解決に貢献できるソリューションを扱える</strong><br>医療業界には解決しなければならない課題が山積しています。なかでも、日本の医療をより良くするためには「人と組織」の課題解決が急務です。医療機関・薬局の費用の半分は「人件費」です。つまり、医師・薬剤師の確保 ≒ 収益の確保となるため、経営状況が良くなり医療サービスの量・質が担保されるためには、まず何よりも人材確保が大事になってきます。ですが、私たちの顧客である医療機関・薬局は人材確保において「信頼できるデータやナレッジがなく考える土台がない」「組織の中に人事・経営のプロもいない」「いつ、どのくらいで採用できるか予測不可」という状況にいます。そこで当社は、多岐にわたるサービスを最適な形で組み合わせ、人材確保から採用した人材を活用するための「経営 + 人材」のソリューション提供までワンストップで行い、人と組織の課題解決を支援します。</li></ul><p><strong>※エムスリーキャリアのサービス・プロダクトの一例</strong></p><ul><li><strong>医療人材：</strong>人材紹介サービス／スキマバイトサービス／就職支援サービス</li><li><strong>経営支援：</strong>SaaS型 採用支援サービス／成功報酬型 経営改善コンサルティング</li><li><strong>健康経営：</strong>産業医紹介サービス／従業員の健康リスク予測ツール</li><li><strong>新規事業：</strong>薬局向けM&A仲介サービス／夜間休日往診支援サービス／自治体向けソリューション 他</li></ul><p><strong>【応募資格】</strong></p><p><span class='tag tag-must'>MUST</span> サービス責任者として、戦略策定／PL管理／営業／組織マネジメントに携わった経験が2年以上ある方</p><p><span class='tag tag-want'>WANT</span></p><ul><li>定量データの扱いが得意な方、データドリブンでの改善経験がある方</li><li>論理的思考能力があり、定量・定性の両側面から建設的な思考ができる方</li><li>事業（サービス）の立ち上げやグロースさせた経験がある方</li></ul><p><strong>【求める人物像】</strong></p><ul><li>当事者意識を持ち、主体的に考え行動できる方</li><li>成長意欲、学習意欲が高い方</li><li>部署の垣根を超えてコミュニケーションをとり、業務を推進できる方</li><li>限られた情報をもとに、自ら一次情報を収集しにいったり組織に入り込んでいける方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業可（条件による）</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.m3career.com/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://www.m3career.com/corporate-info/#about-4" target="_blank">📄 企業情報</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">オープンポジション</span><span class="badge badge-blue">東証プライム</span></div>
+  <div class="co-name">株式会社バリューＨＲ</div>
+  <div class="co-url"><a href="https://www.valuehr.com/" target="_blank">https://www.valuehr.com/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒151-0051 東京都渋谷区千駄ヶ谷5-21-14 バリューＨＲビル</td></tr><tr><th>設立</th><td>2001年</td></tr><tr><th>従業員数</th><td>970名ほど（2025年に200名増員、急拡大中）</td></tr><tr><th>上場区分</th><td>東証プライム</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li><strong>伴走型の提案スタイル</strong>：売り切りで終わるのではなく、お客様と長期間歩調を合わせて課題解決をサポート。自由度の高いカスタマイズで最適なソリューション提供が可能。</li><li><strong>顧客からの直接的な「ありがとう」</strong>：目に見える成果・効果を出し、お客様に喜ばれる機会が豊富。ダイレクトな感謝をモチベーションに日々取り組める。</li><li><strong>カスタマイズで築く営業の価値</strong>：ファーストコールから継続支援まで、一貫して信頼を積み上げることができる。企業ごとのニーズを深掘りし、営業だからこそできる提案力を発揮できる。</li><li><strong>成長し続ける健康領域</strong>：健康経営はトレンドかつ社会的ニーズが高く、業界として衰退リスクが低い。長期的に安定したマーケットで専門性を活かせる。</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">2001年設立。2013年に東証マザーズへ上場し、市場再編に伴い東証プライム市場へ移行。健康保険組合向けBPOおよび健康管理サービスを中核とする企業です。健診予約代行、特定保健指導、健康データ管理、健康ポータルサイト運営などを展開し、企業や健康保険組合の健康管理業務をワンストップで支援しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>2001年設立。2013年に東証マザーズへ上場し、市場再編に伴い東証プライム市場へ移行。健康保険組合向けBPOおよび健康管理サービスを中核とする企業です。健診予約代行、特定保健指導、健康データ管理、健康ポータルサイト運営などを展開し、企業や健康保険組合の健康管理業務をワンストップで支援しています。</p><p>大手監査法人グループの健康保険組合設立支援から事業をスタート。「健康情報のデジタル化と健康管理のインフラ企業」を掲げ、自社開発の健康管理プラットフォーム「バリューカフェテリア®システム」を提供。企業・健康保険組合・健診機関・個人をつなぐ基盤として、ユーザー数300万人、導入企業5万社超へと成長しています。</p><p>昨年度には売上100億円を突破し、前年比20％成長と堅調に拡大。全国4,000箇所以上の健診機関ネットワークを有し、日本生命、大同生命、東京海上、大和総研などとの業務・資本提携を通じて、中小企業向け健康経営支援や営業基盤も強化しています。</p><p>大手監査法人系（Big4）や世界的IT企業（GAFA）の日本法人、さらには国内の伝統的な大企業など、名だたるエンタープライズ企業からの厚い信頼を獲得し続けている一方で、営業現場ではチームを牽引する副本部長に業務が集中してしまうといった課題も生まれています。</p><p><strong>・代表取締役社長　藤田美智雄氏</strong><br>1960年生まれ。国際商科大（現東京国際大）商学部を卒業後、アーサー・アンダーセン会計事務所（現あずさ監査法人）に入社し、人事部で採用などを担当。外資系証券会社などを経て、平成13年7月にバリューＨＲを設立。28年12月に東証1部に上場し、現職。</p><p>社員一人ひとりの健康を重要視するカルチャーを社内でも実践し、経済産業省と東京証券取引所が共同で選定する「健康経営銘柄2025」に4度目の選定、さらに「健康経営優良法人2025（ホワイト500）」に8度目の認定という高い評価を得ています。顧客ニーズの多様化に対応しながら、健康管理のインフラとして社会的価値を高める成長企業であり、前年比120％成長で売上は100億突破、現在社員数は970名ほどで2025年だけで200名の社員が増員され、急拡大中です！</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 オープンポジション</div>
+          <div class="job-preview">ご経験や適性に応じて、最適なポジションを提案。健康管理インフラ企業として急拡大中のバリューＨＲで活躍できる方を広く募集。</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p>ご経験や適性に応じて、ご経験を活かしていただけそうなポジションを提案させていただきます。</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏢 基本出社</span><span class="pill">✅ 副業可（条件による）</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.valuehr.com/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k3"><div class="card-inner">
+  <div class="badges"><span class="badge">障害者雇用支援の事業責任者</span><span class="badge badge-blue">未上場（N-1）</span></div>
+  <div class="co-name">株式会社NEXT ONE（ネクストワン）</div>
+  <div class="co-url"><a href="https://nx1.co.jp/" target="_blank">https://nx1.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒150-0002 東京都渋谷区渋谷3-3-5 NBF渋谷イースト3F</td></tr><tr><th>設立</th><td>2007年6月</td></tr><tr><th>上場区分</th><td>未上場（N-1フェーズ／2027年上場予定）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">2007年6月設立。時代の変化とともに多様化する社会課題に対応し、新たな事業を創造し続ける「事業創出企業」。代表取締役社長・斉藤徹氏が24歳で創業し、2027年の上場予定（N-1フェーズ）にあります。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>2007年6月設立。時代の変化とともに多様化する社会課題に対応し、新たな事業を創造し続ける「事業創出企業」。代表取締役社長・斉藤徹氏が24歳で創業し、2027年の上場予定（N-1フェーズ）にあります。</p><p>創業当初は光ファイバー回線代理店事業からスタートし2019年、自社サービスとして「電力サービス」を立ち上げ、ストック型ビジネスへ転換。現在は約8万ユーザーが利用し、売上100億円規模／営業利益十数億円を達成しています。</p><p>2024年4月には、代表自身が強い想いを持つ「障害者雇用支援ビジネス」を新規事業として始動。単なる雇用ではなく、障がいを持つ方々が「成長を実感できる仕事」を提供することを目的としています。新百合ヶ丘に設立した1,000坪の植物工場では、イチゴ・メロン・コチョウランなど高付加価値作物を栽培。障がい特性に応じた業務を設計し、最低賃金を上回る報酬水準を実現する仕組みを構築中です。同社は利益追求と社会貢献を両立する企業として、仕組み化・効率化・DX・AI化を強みとし、少数精鋭で高い生産性を実現しています。2030年に向けて営業利益120億円規模を目標に事業拡大を推進中です。</p><p><strong>■ 事業の特徴・差別化</strong></p><ul><li><strong>【電力事業】</strong>：若年層（20代中心）に選ばれる電力サービスを展開。料金は地域電力よりやや高いが、サポート品質（電話即応／土日対応）が高く評価。今後はNetflix・家電など付帯サービスのバンドルでLTV向上を狙う。</li><li><strong>【障害者雇用支援事業】</strong>：企業が雇用した障がい者がNEXT ONE運営の農園で就業。法定雇用率引き上げにより需要が拡大。スピードと生産性で高評価を獲得。</li></ul><p><strong>■代表取締役社長　斉藤 徹 氏</strong><br>1982年10月千葉県生まれ。グロービス経営大学院経営学研究科修了（MBA）。通信関連サービス会社で最年少支店長に昇格し、札幌支店の立ち上げで1年以内に業績を急拡大。「関わった人の人生を変えられる会社をつくりたい」との想いから2006年に独立。2007年、株式会社NEXT ONEを設立。論理的アプローチと仕組み化・効率化を通じ、社会課題を解決する「社会貢献型ビジネス」を展開中。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 障害者雇用支援の事業責任者</div>
+          <div class="job-preview">2024年始動の農園型障害者雇用支援事業を牽引する事業責任者。IPO準備フェーズにおいて戦略策定から実行まで担い、社会的インパクトと収益成長を両立する役割。</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>■概要</strong><br>NEXT ONEは2024年に障害者雇用支援事業を立ち上げ、着実に需要を拡大してきました。これまでは管掌役員が事業部長機能を兼務してきましたが、IPOを視野に入れた次の成長フェーズにおいて、この体制では事業のスピードに限界が生じています。戦略を自ら描いて実行し、社会的インパクトと収益成長を両立できる、そんなコアメンバーを迎え入れたいと考えています。</p><p>このポジションでは、農園型事業のビジネスモデルそのものをアップデートする役割を担っていただきます。現場・顧客・市場を深く理解した上で見えてくる課題を、再現性のある事業の仕組みに落とし込む。それがこのポジションの本質です。将来的には農園の多拠点展開と並行して、福祉・障害者雇用領域における新たな事業の探索と立ち上げまで視野に入れています。業界の構造課題に本気で向き合い、次の事業を設計する側に回れる環境です。</p><p>それを可能にしているのが、18年連続で売上成長を遂げてきた経営基盤。投資判断が経営に直結する規模感の中で、スピード感を持って挑戦できます。事業・経営の文脈で本気で動いてみたい方にとって、これ以上のタイミングはありません。</p><p><strong>■業務内容</strong><br>当社が運営するスマート農園型障害者雇用支援事業は、障害者の雇用創出から定着支援までを一体で担う都市農園型の障害者就労支援サービスです。このサービスの事業企画／推進を担っていただきます。</p><ul><li>パートナー企業への提案・関係構築・継続支援・アップセル／クロスセルの設計</li><li>障害者の方の就労定着に向けた運用改善・オペレーション標準化</li><li>委託構造・収益モデルのアップデート提案</li><li>事業KPI管理・レポーティング・改善提案</li><li>第二号農園以降の多拠点展開・新事業探索への参画</li></ul><p><strong>■魅力</strong><br>自ら策定した戦略を実行に移し、成果を直接生み出せる裁量の大きさにあります。IPOを目指す成長企業というダイナミックな環境の中で、新しい市場を開拓し、既存の顧客との関係を深めるなど、会社の未来を形作る重要な役割を担っています。事業の拡張フェーズ・IPO準備という局面において、ここでの1〜2年は他では積めない密度の経験になると思っています。</p><p><strong>■組織</strong><br>現在20名。今後10農園に拡大していく計画。</p><p><strong>【応募資格】</strong></p><p><span class='tag tag-must'>MUST</span></p><ul><li>法人・パートナーとの折衝・調整・関係構築の経験</li><li>チームリードまたはプロジェクト推進の経験</li><li>事業KPIを自分ごとで追いかけた経験</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>社会課題解決型のビジネスに、本気で向き合える方</li><li>多様なバックグラウンドを持つメンバーと対等に協働し、組織を前に進められる方</li><li>不確実な環境を面白がり、自分で突破口を開ける方</li><li>事業の0→1と1→100、どちらのフェーズにも手応えを感じられる方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏢 基本出社</span><span class="pill">❌ 副業不可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://nx1.co.jp/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://drive.google.com/file/d/13m0z9a6RzSojAuwiiw7aQJ16VIUkDdtE/view?usp=sharing" target="_blank">📄 会社資料（2026.04）</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが野本誠 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
